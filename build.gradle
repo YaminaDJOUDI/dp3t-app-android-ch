@@ -11,13 +11,28 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-
+	ext {
+		ubiqueMaven = {
+			url "$ubiqueMavenUrl"
+			credentials {
+				username "$ubiqueMavenUser"
+				password "$ubiqueMavenPass"
+			}
+			authentication {
+				basic(BasicAuthentication)
+				digest(DigestAuthentication)
+			}
+		}
+	}
 	repositories {
+		maven ubiqueMaven
 		google()
 		jcenter()
 	}
 	dependencies {
 		classpath 'com.android.tools.build:gradle:4.1.0'
+		classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.5'
+		classpath 'ch.ubique.i18n:poeditor-android:0.1.21'
 	}
 }
 
