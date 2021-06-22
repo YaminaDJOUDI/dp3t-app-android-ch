@@ -13,6 +13,17 @@
 buildscript {
 	ext {
 		kotlinVersion = '1.4.31'
+		ubiqueMaven = {
+			url "$ubiqueMavenUrl"
+			credentials {
+				username "$ubiqueMavenUser"
+				password "$ubiqueMavenPass"
+			}
+			authentication {
+				basic(BasicAuthentication)
+				digest(DigestAuthentication)
+			}
+		}
 		
 		readProperty = { paramName -> readPropertyWithDefault(paramName, null) }
 		readPropertyWithDefault = { paramName, defaultValue ->
@@ -32,6 +43,7 @@ buildscript {
 		}
 	}
 	repositories {
+		maven ubiqueMaven
 		google()
 		mavenCentral()
 	}
@@ -39,6 +51,10 @@ buildscript {
 		classpath 'com.android.tools.build:gradle:4.1.3'
 		classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
 		classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.12'
+		classpath 'ch.ubique.gradle:gradle-android:4.1.9'
+		classpath 'ch.ubique.i18n:poeditor-android:0.1.21'
+		classpath 'com.vanniktech:gradle-maven-publish-plugin:0.13.0'
+		classpath 'org.jetbrains.dokka:dokka-gradle-plugin:1.4.10.2'
 	}
 }
 

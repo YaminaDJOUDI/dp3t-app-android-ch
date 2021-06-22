@@ -2,7 +2,7 @@ plugins {
 	id 'com.android.library'
 	id 'kotlin-android'
 	id 'com.google.protobuf'
-
+	id 'ch.ubique.i18n'
 }
 
 android {
@@ -69,4 +69,10 @@ dependencies {
 	api 'org.crowdnotifier:crowdnotifier-sdk-android:4.0.0-dev-18'
 	api 'com.google.android.gms:play-services-instantapps:17.0.0'
 
+}
+
+poeditor {
+	apikey "$ubiquePoEditorAPIKey"
+	projectId '334421'
+	defaultLang 'en'
 }
